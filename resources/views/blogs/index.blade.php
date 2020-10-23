@@ -79,33 +79,29 @@
             @endif
 
 
-            <a href="{{url('user/create')}}">Crear Usuarios</a>
-          <table>
-              <tr>
-                  <th>Nombre</th>
-                  <th>Email</th>
-                  <th>Ver blogs</th>
-                  <th>Acciones</th>
-              </tr>
+            <a href="{{url('/')}}">Volver</a>
+            <a href="{{url('blogs/create/'.$user)}}">Crear blog a este usuario</a>
+            <br>
+            @foreach ($blogs as $item)
+                <div>
+                    <h1>{{$item->titulo_blog}}</h1>
+                    <hr>
+                    <p>{{$item->contenido_blog}}</p>
+                </div>
+            @endforeach
+           
+          
               
-                @foreach ($Usuarios as $item)
+                {{-- @foreach ($Usuarios as $item)
                 <tr>
                     <td>{{$item->name}}</td>
                     <td>{{$item->email}}</td>
-                    <td><a href="{{ url('blogs/'.$item->id)}}">Blogs del usuario</a></td>
+                    <td><a href="{{ url('blogs/'.$item->id)}}">Blog del usuario</a></td>
                     <td>
                         <button>Editar</button>
                         <button>Eliminar</button>
                     </td>
                 </tr>
-                @endforeach
-             
-            
-          </table>
-                    {{-- @foreach ($Usuarios as $item)
-                        <p>{{$item->name}}</p>
-                        
-                    @endforeach --}}
-                
+                @endforeach --}}
     </body>
 </html>

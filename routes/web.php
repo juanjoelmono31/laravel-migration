@@ -13,6 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', "UserController@index");
+Route::get('user/create', function(){
+
+    return view('users.create');
+
 });
+Route::post('user/store', "UserController@store");
+Route::get('blogs/{id}', "BlogsController@index");
+Route::get('blogs/create/{id}', function ($id) {
+
+    return view('blogs.create')->with('id_usuario', $id);
+    
+});
+Route::post('blogs/store', "BlogsController@store");

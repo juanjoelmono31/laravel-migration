@@ -79,33 +79,19 @@
             @endif
 
 
-            <a href="{{url('user/create')}}">Crear Usuarios</a>
-          <table>
-              <tr>
-                  <th>Nombre</th>
-                  <th>Email</th>
-                  <th>Ver blogs</th>
-                  <th>Acciones</th>
-              </tr>
-              
-                @foreach ($Usuarios as $item)
-                <tr>
-                    <td>{{$item->name}}</td>
-                    <td>{{$item->email}}</td>
-                    <td><a href="{{ url('blogs/'.$item->id)}}">Blogs del usuario</a></td>
-                    <td>
-                        <button>Editar</button>
-                        <button>Eliminar</button>
-                    </td>
-                </tr>
-                @endforeach
+            <a href="{{url('/')}}">Volver</a>
+
+         <form action="{{url('blogs/store')}}" method="POST">
+            @csrf
+             <p>Titulo: <input type="text" name="titulo"></p>
+             <p>Contenido: </p> 
+                <textarea name="contenido" id="" cols="30" rows="10"></textarea>
+                <input type="hidden" value="{{$id_usuario}}" name="id_usuario">
+
+             <button type="submit" >Crear</button>
              
-            
-          </table>
-                    {{-- @foreach ($Usuarios as $item)
-                        <p>{{$item->name}}</p>
-                        
-                    @endforeach --}}
+         </form>
+         
                 
     </body>
 </html>
